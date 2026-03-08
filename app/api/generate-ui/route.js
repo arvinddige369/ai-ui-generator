@@ -48,7 +48,7 @@ export async function POST(req) {
 
     const allowedOrigins = [
       "http://localhost:3000",
-      process.env.NEXT_PUBLIC_APP_URL,
+      "https://ai-ui-generator-mtx.vercel.app"
     ];
 
     if (origin && !allowedOrigins.includes(origin)) {
