@@ -46,14 +46,11 @@ export async function POST(req) {
     // -------------------------
     const origin = req.headers.get("origin");
 
-    const allowedOrigins = [
-      "http://localhost:3000",
-      "https://ai-ui-generator-mtx.vercel.app"
-    ];
-
-    if (origin && !allowedOrigins.includes(origin)) {
-      console.log("Blocked origin:", origin);
-
+    if (
+      origin &&
+      !origin.includes("localhost") &&
+      !origin.includes("vercel.app")
+    ) {
       return NextResponse.json(
         { error: "Unauthorized origin" },
         { status: 403 }
