@@ -48,10 +48,12 @@ export async function POST(req) {
 
     const allowedOrigins = [
       "http://localhost:3000",
-      process.env.NEXT_PUBLIC_APP_URL
-    ].filter(Boolean);
+      process.env.NEXT_PUBLIC_APP_URL,
+    ];
 
     if (origin && !allowedOrigins.includes(origin)) {
+      console.log("Blocked origin:", origin);
+
       return NextResponse.json(
         { error: "Unauthorized origin" },
         { status: 403 }
