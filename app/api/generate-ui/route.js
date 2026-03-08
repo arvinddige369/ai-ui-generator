@@ -35,10 +35,10 @@ function checkRateLimit(ip) {
 
 export async function POST(req) {
   console.log("Origin:", req.headers.get("origin"));
-console.log("API Key Header:", req.headers.get("x-api-key"));
-console.log("Server API Key:", process.env.CLIENT_API_KEY);
-console.log("Auth Header:", req.headers.get("authorization"));
-console.log("Server Token:", process.env.SECURE_TOKEN);
+  console.log("API Key Header:", req.headers.get("x-api-key"));
+  console.log("Server API Key:", process.env.CLIENT_API_KEY);
+  console.log("Auth Header:", req.headers.get("authorization"));
+  console.log("Server Token:", process.env.SECURE_TOKEN);
   try {
 
     // -------------------------
@@ -49,7 +49,7 @@ console.log("Server Token:", process.env.SECURE_TOKEN);
     const allowedOrigins = [
       "http://localhost:3000",
       process.env.NEXT_PUBLIC_APP_URL
-    ];
+    ].filter(Boolean);
 
     if (origin && !allowedOrigins.includes(origin)) {
       return NextResponse.json(
