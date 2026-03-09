@@ -52,7 +52,7 @@ export async function POST(req) {
       !origin.includes("vercel.app")
     ) {
       return NextResponse.json(
-        { error: "Unauthorized origin" },
+        { error: "Unauthorized origin"},
         { status: 403 }
       );
     }
